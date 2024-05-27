@@ -1,186 +1,193 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <header>
-        <img src="Ruta para el logo" alt="Logo Colegio Filarmónico Jorge marioi Bergoglio">
-        <h1> Colegio Filarmónico (opcional)</h1>
-        
-        <nav>
-            <ul>
-                <li><router-link to=#>Enlace 1</router-link></li>
-                <li><router-link to="#">Enlace 2</router-link></li>
-                    <ul>
-                        <li><router-link to="#">Subenlace 1</router-link></li>
-                        <li><router-link to="#">subenlace 2</router-link></li>
-                    </ul>
-                    <!--Desarrollar los demás enlaces desde aquí-->
-            </ul>
-        </nav>
-    </header>
-    <main>
+    <v-container>
+      <header>
+        <img src="path-to-logo.jpg" alt="Logo Colegio">
+        <h1>C.F. Jorge Mario Bergoglio</h1>
+        <v-app-bar app>
+          <v-toolbar-title>Menu</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn text>
+            <router-link to="#">Enlace 1</router-link>
+          </v-btn>
+          <v-menu>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn text v-bind="attrs" v-on="on">Enlace 2</v-btn>
+            </template>
+            <v-list>
+              <v-list-item>
+                <router-link to="#">Subenlace 1</router-link>
+              </v-list-item>
+              <v-list-item>
+                <router-link to="#">Subenlace 2</router-link>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-app-bar>
+      </header>
+      <main>
         <section class="marquee">
-            <!--Marquesina de las fotos del colegio-->
+          <!-- Marquesina con fotos del colegio -->
         </section>
         <div class="content">
-            <aside>
-                <ul>
-                    <li><router-link to="#"><img src="imagen del link>" alt="nombre imagen">Link 1</router-link></li>
-                    <li><router-link to="#"><img src="imagen del link2" alt="nombre imagen2">Link2</router-link></li>
-                    <!--Agregar más enlaces-->
-                </ul>
-            </aside>
-            <section>
-                <article class="news">
-                    <!--Informacione, etc.-->
-                </article>
-                <article class="calendar">
-                    <!--Calendario institucional-->
-                </article>
-            </section>
+          <aside>
+            <ul>
+              <li><router-link to="#"><img src="path-to-image.jpg" alt="Link Image">Link 1</router-link></li>
+              <li><router-link to="#"><img src="path-to-image.jpg" alt="Link Image">Link 2</router-link></li>
+            </ul>
+          </aside>
+          <section>
+            <article class="news">
+              <!-- Informaciones, comunicados, fotos o videos -->
+            </article>
+            <article class="calendar">
+              <!-- Calendario institucional -->
+            </article>
+          </section>
         </div>
-    </main>
-    <footer>
-        <p>marca registrada</p>
-        <li><route-link to="#">Condiciones de uso</route-link></li>
-        <li><route-link to="#">Tratamiento de datos</route-link></li>
-        <li><router-link to="#">Políticas de privacidad</router-link></li>
-    </footer>
-</template>
-
-<!--Definición del componente Vue-->
-<script>
-export default{
+      </main>
+      <footer>
+        <ul>
+          <li><router-link to="#">Condiciones de uso</router-link></li>
+          <li><router-link to="#">Tratamiento de datos</router-link></li>
+          <li><router-link to="#">Política de privacidad</router-link></li>
+        </ul>
+      </footer>
+    </v-container>
+  </template>
+  
+  <script>
+  export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'Home',
-    data(){
-        return{
-            //Define el estado del componente, si es necesario
-        };
-    },
-    methods:{
-        //Definir los métodos del componente.
-    },
-    mounted() {
-        //Código que se ejecuta al montar el componente
-    }
-};
-</script>
-
-<!--Estilos de la hoja-->
-<style scoped>
-body{
-    font-family: Arial, Helvetica, sans-serif, "Roboto";
+  };
+  </script>
+  
+  <style scoped>
+  body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-header{
+  }
+  
+  header {
     background-color: #333;
     color: white;
     padding: 1rem;
     text-align: center;
-}
-
-header img{
-    max-width: 6.25rem;
+  }
+  
+  header img {
+    max-width: 100px;
     height: auto;
-}
-nav ul {
+  }
+  
+  nav ul {
     list-style: none;
-    padding: 1rem;
-}
-nav ul > li {
+    padding: 0;
+  }
+  
+  nav ul > li {
     display: inline-block;
     margin-right: 1rem;
-}
-
-nav ul > li:hover>ul{
+  }
+  
+  nav ul > li > ul {
+    display: none;
+  }
+  
+  nav ul > li:hover > ul {
     display: block;
     position: absolute;
     background-color: #fff;
     padding: 1rem;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-nav a {
+  }
+  
+  nav a {
     color: white;
     text-decoration: none;
-}
-
-main{
+  }
+  
+  main {
     width: 98%;
     margin: 0 auto;
-    
-}
-
-.marquee {
+  }
+  
+  .marquee {
     width: 99%;
-    height: 2.5rem; /*40px */
+    height: 2.5rem; /* 40px = 2.5rem */
     background-color: #f4f4f4;
     overflow: hidden;
     white-space: nowrap;
-}
-
-.content {
+  }
+  
+  .content {
     display: flex;
     margin-top: 1rem;
-}
-
-aside {
+  }
+  
+  aside {
     width: 30%;
     padding: 1rem;
     background-color: #f9f9f9;
-}
-
-aside ul {
+  }
+  
+  aside ul {
     list-style: none;
     padding: 0;
-}
-
-aside li {
-    margin-bottom: 1.5rem;
-}
-aside img {
-    max-width: 25%;
+  }
+  
+  aside li {
+    margin-bottom: 1rem;
+  }
+  
+  aside img {
+    max-width: 100%;
     height: auto;
-}
-
-section {
+  }
+  
+  section {
     width: 70%;
     padding: 1rem;
-}
-
-article {
+  }
+  
+  article {
     width: 99%;
     margin-bottom: 1rem;
-}
-
-.news {
-    height: 3.125rem; /*50px*/
+  }
+  
+  .news {
+    height: 3.125rem; /* 50px = 3.125rem */
     background-color: #e9e9e9;
-}
-.calendar {
-    height: 2.5 rem; /*40 px */
+  }
+  
+  .calendar {
+    height: 2.5rem; /* 40px = 2.5rem */
     background-color: #d9d9d9;
-}
-
-footer {
+  }
+  
+  footer {
     background-color: #333;
-    color:white;
+    color: white;
     padding: 1rem;
     text-align: center;
-}
-footer ul {
+  }
+  
+  footer ul {
     list-style: none;
     padding: 0;
-}
-
-footer li {
-    display: inline;
+  }
+  
+  footer ul > li {
+    display: inline-block;
     margin-right: 1rem;
-}
-footer a {
+  }
+  
+  footer a {
     color: white;
     text-decoration: none;
-}
-</style>
+  }
+  </style>
+  
