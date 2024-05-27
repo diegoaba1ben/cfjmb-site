@@ -57,10 +57,35 @@
   </template>
   
   <script>
+
   export default {
-    // eslint-disable-next-line vue/multi-word-component-names
-    name: 'Home',
-  };
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Home',
+  data() {
+    return {
+      data: null,
+      links : [
+        { text:'Home', url:'/'},
+        { text: 'NotFound', url: '/NotFound'}
+        //Aquí se agregan más enlaces
+      ]
+    }
+  },
+  mounted() {
+    this.$axios.get('')//Preguntar cómo determino ese endpoint
+      .then(response => {
+        this.data = response.data
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  },
+  methods: {
+    navigate(url){
+      this.$router.push(url)
+    }
+  }
+}
   </script>
   
   <style scoped>
